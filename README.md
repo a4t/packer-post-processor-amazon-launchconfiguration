@@ -17,7 +17,9 @@ $ git clone git@github.com:a4t/packer-post-processor-amazon-launchconfiguration.
 
 or
 
-TODO: Binary Download
+$ wget -P /tmp https://github.com/a4t/packer-post-processor-amazon-launchconfiguration/releases/download/v0.0.2/packer-post-processor-amazon-launchconfiguration-v0.0.2-linux-amd64.zip
+$ unzip packer-post-processor-amazon-launchconfiguration-v0.0.2-linux-amd64.zip
+$ mv linux-amd64/packer-post-processor-amazon-launchconfiguration ~/.packer.d/plugins or Your PATH
 ```
 
 ## Build
@@ -54,7 +56,7 @@ $ vim example/packer.json
   }],
   "post-processors":[{
     "type": "amazon-launchconfiguration",
-    "config_name_prefix": "amazon-launchconfiguration-",
+    "config_name_prefix": "my-service-",
     "instance_type": "c4.large",
     "keep_releases": 3
   }]
@@ -77,7 +79,7 @@ $ vim example/packer.json
   }],
   "post-processors":[{
     "type": "amazon-launchconfiguration",
-    "config_name_prefix": "amazon-launchconfiguration-",
+    "config_name_prefix": "my-service-",
     "instance_type": "c4.large",
     "keep_releases": 3,
     "auto_scaling_group_names": [
