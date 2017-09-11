@@ -19,7 +19,7 @@ type Config struct {
 	AwsAccessKeyId               string                          `mapstructure:"aws_access_key_id"`
 	AwsSecretAccessKey           string                          `mapstructure:"aws_secret_access_key"`
 	ConfigNamePrefix             string                          `mapstructure:"config_name_prefix"`
-	AutoScalingGroupName         string                          `mapstructure:"auto_scaling_group_name"`
+	AutoScalingGroupNames        []*string                       `mapstructure:"auto_scaling_group_names"`
 	InstanceType                 string                          `mapstructure:"instance_type"`
 	KeepReleases                 int                             `mapstructure:"keep_releases"`
 	IamInstanceProfile           string                          `mapstructure:"iam_instance_profile"`
@@ -55,9 +55,11 @@ func amazonLaunchconfigRotate(ui packer.Ui, artifact packer.Artifact, p *PostPro
 		ui.Say("Delete: LaunchConfigName " + value)
 	}
 
-	if p.config.AutoScalingGroupName != "" {
+	if len(p.config.AutoScalingGroupNames) != 0 {
 		UpdateAutoScalingGroup(autoscalingClient, *createLaunchConfigurationName, &p.config)
-		ui.Say("Update: AutoScalingGroupName " + p.config.AutoScalingGroupName)
+		for i := 0; i < len(p.config.AutoScalingGroupNames); i++ {
+			ui.Say("Update: AutoScalingGroupName " + *p.config.AutoScalingGroupNames[i])
+		}
 	}
 }
 

@@ -78,7 +78,10 @@ $ vim example/packer.json
     "config_name_prefix": "amazon-launchconfiguration-",
     "instance_type": "c4.large",
     "keep_releases": 3,
-    "auto_scaling_group_name": "hogehoge"
+    "auto_scaling_group_names": [
+      "hogehoge",
+      "mogemoge"
+    ]
   }]
 }
 

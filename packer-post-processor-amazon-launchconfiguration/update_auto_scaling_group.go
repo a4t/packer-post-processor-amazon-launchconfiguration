@@ -8,15 +8,18 @@ import (
 	"github.com/aws/aws-sdk-go/service/autoscaling"
 )
 
-func UpdateAutoScalingGroup(autoscalingClient *autoscaling.AutoScaling, launchConfigurationName string, config *Config) *autoscaling.UpdateAutoScalingGroupOutput {
-	params := &autoscaling.UpdateAutoScalingGroupInput{
-		AutoScalingGroupName:    aws.String(config.AutoScalingGroupName),
-		LaunchConfigurationName: aws.String(launchConfigurationName),
+func UpdateAutoScalingGroup(autoscalingClient *autoscaling.AutoScaling, launchConfigurationName string, config *Config) (bool, error) {
+	for i := 0; i < len(config.AutoScalingGroupNames); i++ {
+		params := &autoscaling.UpdateAutoScalingGroupInput{
+			AutoScalingGroupName:    config.AutoScalingGroupNames[i],
+			LaunchConfigurationName: aws.String(launchConfigurationName),
+		}
+		_, err := autoscalingClient.UpdateAutoScalingGroup(params)
+		if err != nil {
+			fmt.Println(err.Error())
+			os.Exit(1)
+		}
 	}
-	res, err := autoscalingClient.UpdateAutoScalingGroup(params)
-	if err != nil {
-		fmt.Println(err.Error())
-		os.Exit(1)
-	}
-	return res
+
+	return true, nil
 }
