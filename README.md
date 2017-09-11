@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/a4t/packer-post-processor-amazon-launchconfiguration/tree/master.svg?style=svg)](https://circleci.com/gh/a4t/packer-post-processor-amazon-launchconfiguration/tree/master)
+
 # packer-post-processor-amazon-launchconfiguration
 
 Packer post-processor plugin for Launchconfiguration rotate management
