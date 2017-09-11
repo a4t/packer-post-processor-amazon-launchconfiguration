@@ -1,5 +1,5 @@
 NAME     := packer-post-processor-amazon-launchconfiguration
-VERSION  := v0.0.1
+VERSION  := $(shell cat release_tag)
 REVISION := $(shell git rev-parse --short HEAD)
 
 SRCS    := $(shell find . -type f -name '*.go')
