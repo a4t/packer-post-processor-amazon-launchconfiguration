@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/a4t/packer-post-processor-amazon-launchconfiguration/badges/gpa.svg)](https://codeclimate.com/github/a4t/packer-post-processor-amazon-launchconfiguration)
 [![CircleCI](https://circleci.com/gh/a4t/packer-post-processor-amazon-launchconfiguration/tree/master.svg?style=svg)](https://circleci.com/gh/a4t/packer-post-processor-amazon-launchconfiguration/tree/master)
 
 # packer-post-processor-amazon-launchconfiguration
