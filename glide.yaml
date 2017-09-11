@@ -1,0 +1,16 @@
+package: github.com/a4t/packer-post-processor-amazon-launchconfiguration
+import:
+- package: github.com/aws/aws-sdk-go
+  subpackages:
+  - aws
+  - aws/credentials
+  - aws/session
+  - service/autoscaling
+- package: github.com/hashicorp/packer
+  subpackages:
+  - builder/amazon/common
+  - common
+  - helper/config
+  - packer
+  - packer/plugin
+  - template/interpolate

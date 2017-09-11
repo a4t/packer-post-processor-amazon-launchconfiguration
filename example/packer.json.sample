@@ -1,0 +1,18 @@
+{
+  "builders": [{
+    "type": "amazon-ebs",
+    "vpc_id": "vpc-xxxxxxxxxx",
+    "subnet_id": "subnet-yyyyyyyyyy",
+    "region": "ap-northeast-1",
+    "source_ami": "ami-4af5022c",
+    "instance_type": "t2.micro",
+    "ssh_username": "ec2-user",
+    "ami_name": "amazon-launchconfiguration-{{timestamp}}"
+  }],
+  "post-processors":[{
+    "type": "amazon-launchconfiguration",
+    "config_name_prefix": "amazon-launchconfiguration-",
+    "instance_type": "c4.large",
+    "keep_releases": 3
+  }]
+}
