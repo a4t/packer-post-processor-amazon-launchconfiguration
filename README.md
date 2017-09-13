@@ -125,3 +125,24 @@ $ vim example/packer.json
 - Update autoscaling group
   - auto_scaling_group_name
 
+## IAM
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:CreateLaunchConfiguration",
+                "autoscaling:DeleteLaunchConfiguration",
+                "autoscaling:DescribeLaunchConfigurations",
+                "autoscaling:UpdateAutoScalingGroup"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+```
