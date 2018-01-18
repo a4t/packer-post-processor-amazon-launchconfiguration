@@ -56,8 +56,10 @@ func setIamInstanceProfile(params *autoscaling.CreateLaunchConfigurationInput, c
 
 func setAssociatePublicIpAddress(params *autoscaling.CreateLaunchConfigurationInput, config *Config) *autoscaling.CreateLaunchConfigurationInput {
 	if !config.AssociatePublicIpAddress {
-		params.AssociatePublicIpAddress = aws.Bool(config.AssociatePublicIpAddress)
-	}
+		params.AssociatePublicIpAddress = aws.Bool(false)
+	} else {
+        params.AssociatePublicIpAddress = aws.Bool(true)
+    }
 	return params
 }
 
@@ -77,8 +79,10 @@ func setClassicLinkVPCSecurityGroups(params *autoscaling.CreateLaunchConfigurati
 
 func setEbsOptimized(params *autoscaling.CreateLaunchConfigurationInput, config *Config) *autoscaling.CreateLaunchConfigurationInput {
 	if !config.EbsOptimized {
-		params.EbsOptimized = aws.Bool(config.EbsOptimized)
-	}
+		params.EbsOptimized = aws.Bool(false)
+	} else {
+        params.EbsOptimized = aws.Bool(true)
+    }
 	return params
 }
 
